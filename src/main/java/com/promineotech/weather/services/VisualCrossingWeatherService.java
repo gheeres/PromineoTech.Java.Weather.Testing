@@ -227,27 +227,25 @@ public class VisualCrossingWeatherService extends HttpWeatherService
        }
       }  
      */
-    JSONObject obj = new org.json.JSONObject(json);
-    JSONObject currentConditions = obj.getJSONObject("currentConditions");
-    return new WeatherModel()
-        .setLatitude(obj.getFloat("latitude"))
-        .setLongitude(obj.getFloat("longitude"))
-        .setDate(Date.from(Instant.ofEpochSecond(currentConditions.getLong("datetimeEpoch"))))
-        .setDescription(currentConditions.getString("conditions"))
-        .setTemperature(TemperatureModel.fromCelsius(currentConditions.getFloat("temp")))
-        .setFeelsLike(TemperatureModel.fromCelsius(currentConditions.getFloat("feelslike")))
-        .setWindSpeed(currentConditions.getFloat("windspeed"))
-        .setWindDirection(currentConditions.getFloat("winddir"));
+    //JSONObject obj = new org.json.JSONObject(json);
+    //JSONObject currentConditions = obj.getJSONObject("currentConditions");
+    //return new WeatherModel()
+    //    .setLatitude(obj.getFloat("latitude"))
+    //    .setLongitude(obj.getFloat("longitude"))
+    //    .setDate(Date.from(Instant.ofEpochSecond(currentConditions.getLong("datetimeEpoch"))))
+    //    .setDescription(currentConditions.getString("conditions"))
+    //    .setTemperature(TemperatureModel.fromCelsius(currentConditions.getFloat("temp")))
+    //    .setFeelsLike(TemperatureModel.fromCelsius(currentConditions.getFloat("feelslike")))
+    //    .setWindSpeed(currentConditions.getFloat("windspeed"))
+    //    .setWindDirection(currentConditions.getFloat("winddir"));
+
+    //TODO
+    throw new UnsupportedOperationException();
   }
   
   @Override
   public WeatherModel get(float latitude, float longitude) {
-    String url = String.format("%s%f%%2C%f?contentType=json&include=current&unitGroup=metric&key=%s", 
-                               baseUrl, latitude, longitude, apiKey);
-    HttpResponse<String> response = getHTTPResponse(url);
-    if (response.statusCode() == 200) {
-      return toWeatherModel(response.body());
-    }
-    return null;
+    //TODO
+    throw new UnsupportedOperationException();
   }
 }

@@ -2,6 +2,7 @@ package com.promineotech.weather.services.tests;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.offset;
+import static org.junit.jupiter.api.Assertions.fail;
 import java.time.Instant;
 import java.util.Date;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,21 +35,10 @@ public class VisualCrossingWeatherServiceTests extends WeatherServiceTests {
         + "}";
     
     WeatherModel weather = VisualCrossingWeatherService.toWeatherModel(json);
-    assertThat(weather).isNotNull();
 
-    Date expectedDate = Date.from(Instant.ofEpochSecond(1663345769));
-    assertThat(weather.getDate().getTime()).isEqualTo(expectedDate.getTime());
-    assertThat(weather.getLongitude()).isCloseTo(-89.5746, offset(0.01));
-    assertThat(weather.getLatitude()).isCloseTo(44.5236, offset(0.01));
-    assertThat(weather.getTemperature()).isNotNull();
-    assertThat(weather.getTemperature().getKelvin())
-              .isCloseTo(17 + TemperatureModel.KELVIN_TO_CELSIUS_CONVERSION, offset(0.01));
-    assertThat(weather.getFeelsLike()).isNotNull();
-    assertThat(weather.getFeelsLike().getKelvin())
-              .isCloseTo(18 + TemperatureModel.KELVIN_TO_CELSIUS_CONVERSION, offset(0.01));
-    assertThat(weather.getWindSpeed()).isCloseTo(11.3, offset(0.01));
-    assertThat(weather.getWindDirection()).isEqualTo(180, offset(0.01));
-    assertThat(weather.getDescription()).isEqualTo("Clear");
+    assertThat(weather).isNotNull();
+    //TODO
+    fail("Not implemented");
   }
   
   @Test
@@ -60,9 +50,7 @@ public class VisualCrossingWeatherServiceTests extends WeatherServiceTests {
     WeatherModel weather = service.get(latitude, longitude);
 
     assertThat(weather).isNotNull();
-    assertThat(weather.getLatitude()).isCloseTo(latitude, offset(0.9));
-    assertThat(weather.getLongitude()).isCloseTo(longitude, offset(0.9));
-    assertThat((weather.getDate().getTime() - now.getTime()))
-              .isLessThan(1000);
+    //TODO
+    fail("Not implemented");
   }
 }

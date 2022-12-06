@@ -2,6 +2,7 @@ package com.promineotech.weather.services.tests;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.offset;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.anyString;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -42,22 +43,8 @@ public class OpenWeatherMapWeatherServiceTests extends WeatherServiceTests {
         + "  \"dt\": 1661870592\r\n"
         + "}";
     
-    WeatherModel weather = OpenWeatherMapWeatherService.toWeatherModel(json);
-    assertThat(weather).isNotNull();
-
-    Date expectedDate = Date.from(Instant.ofEpochSecond(1661870592));
-    assertThat(weather.getDate().getTime()).isEqualTo(expectedDate.getTime());
-    assertThat(weather.getLongitude()).isCloseTo(10.99, offset(0.01));
-    assertThat(weather.getLatitude()).isCloseTo(44.34, offset(0.01));
-    assertThat(weather.getTemperature()).isNotNull();
-    assertThat(weather.getTemperature().getKelvin())
-              .isCloseTo(298.48, offset(0.01));
-    assertThat(weather.getFeelsLike()).isNotNull();
-    assertThat(weather.getFeelsLike().getKelvin())
-              .isCloseTo(298.74, offset(0.01));
-    assertThat(weather.getWindSpeed()).isCloseTo(0.62, offset(0.01));
-    assertThat(weather.getWindDirection()).isCloseTo(349, offset(0.01));
-    assertThat(weather.getDescription()).isEqualTo("moderate rain");
+    //TODO
+    fail("Not implemented");
   }
   
   @Test
@@ -67,16 +54,8 @@ public class OpenWeatherMapWeatherServiceTests extends WeatherServiceTests {
     Date now = Date.from(Instant.now());
     double expectedTemperature = 271.47;
     
-    WeatherModel weather = service.get(latitude, longitude);
-
-    assertThat(weather).isNotNull();
-    assertThat(weather.getLatitude()).isCloseTo(latitude, offset(0.9));
-    assertThat(weather.getLongitude()).isCloseTo(longitude, offset(0.9));
-    assertThat((weather.getDate().getTime() - now.getTime()))
-              .isLessThan(10000);
-    assertThat(weather.getTemperature()).isNotNull();
-    assertThat(weather.getTemperature().getKelvin())
-              .isCloseTo(expectedTemperature, offset(100.0)); // Hack
+    //TODO
+    fail("Not implemented");
   }
   
   @Test
@@ -86,25 +65,7 @@ public class OpenWeatherMapWeatherServiceTests extends WeatherServiceTests {
     float longitude = -89.5746f;
     Date date = Date.from(Instant.ofEpochSecond(1663293758));
 
-    OpenWeatherMapWeatherService mockService = Mockito.spy(service);
-    Mockito.doReturn(getSampleResponse(200,json))
-           .when(mockService)
-           .getHTTPResponse(anyString());
-    
-    WeatherModel weather = mockService.get(latitude, longitude);
-
-    assertThat(weather).isNotNull();
-    assertThat(weather.getLatitude()).isCloseTo(latitude, offset(0.9));
-    assertThat(weather.getLongitude()).isCloseTo(longitude, offset(0.9));
-    assertThat(weather.getDate().getTime()).isEqualTo(date.getTime());
-    assertThat(weather.getTemperature()).isNotNull();
-    assertThat(weather.getTemperature().getKelvin())
-              .isCloseTo(292.68, offset(0.01));
-    assertThat(weather.getFeelsLike()).isNotNull();
-    assertThat(weather.getFeelsLike().getKelvin())
-              .isCloseTo(292.8, offset(0.01));
-    assertThat(weather.getWindSpeed()).isCloseTo(2.68, offset(0.01));
-    assertThat(weather.getWindDirection()).isCloseTo(175, offset(0.01));
-    assertThat(weather.getDescription()).isEqualTo("clear sky");
+    //TODO
+    fail("Not implemented");
   }
 }

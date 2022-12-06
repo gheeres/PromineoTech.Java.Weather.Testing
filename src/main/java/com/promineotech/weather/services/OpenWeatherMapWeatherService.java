@@ -87,29 +87,28 @@ public class OpenWeatherMapWeatherService extends HttpWeatherService
         "cod": 200
       }   
      */
-    JSONObject obj = new org.json.JSONObject(json);
-    JSONObject coord = obj.getJSONObject("coord");
-    JSONArray weather = obj.getJSONArray("weather");
-    JSONObject wind = obj.getJSONObject("wind");
-    JSONObject main = obj.getJSONObject("main");
-    return new WeatherModel()
-        .setLatitude(coord.getFloat("lat"))
-        .setLongitude(coord.getFloat("lon"))
-        .setDate(Date.from(Instant.ofEpochSecond(obj.getInt("dt"))))
-        .setDescription(weather.getJSONObject(0).getString("description"))
-        .setTemperature(TemperatureModel.fromKelvin(main.getFloat("temp")))
-        .setFeelsLike(TemperatureModel.fromKelvin(main.getFloat("feels_like")))
-        .setWindSpeed(wind.getFloat("speed"))
-        .setWindDirection(wind.getFloat("deg"));
+
+    //JSONObject obj = new org.json.JSONObject(json);
+    //JSONObject coord = obj.getJSONObject("coord");
+    //JSONArray weather = obj.getJSONArray("weather");
+    //JSONObject wind = obj.getJSONObject("wind");
+    //JSONObject main = obj.getJSONObject("main");
+    //return new WeatherModel()
+    //    .setLatitude(coord.getFloat("lat"))
+    //    .setLongitude(coord.getFloat("lon"))
+    //    .setDate(Date.from(Instant.ofEpochSecond(obj.getInt("dt"))))
+    //    .setDescription(weather.getJSONObject(0).getString("description"))
+    //    .setTemperature(TemperatureModel.fromKelvin(main.getFloat("temp")))
+    //    .setFeelsLike(TemperatureModel.fromKelvin(main.getFloat("feels_like")))
+    //    .setWindSpeed(wind.getFloat("speed"))
+    //    .setWindDirection(wind.getFloat("deg"));
+
+    //TODO
+    throw new UnsupportedOperationException();
   }
 
   public WeatherModel get(float latitude, float longitude) {
-    String url = String.format("%s?lat=%f&lon=%f&appid=%s", 
-                               baseUrl, latitude, longitude, apiKey);
-    HttpResponse<String> response = getHTTPResponse(url);
-    if (response.statusCode() == 200) {
-      return toWeatherModel(response.body());
-    }
-    return null;
+    //TODO
+    throw new UnsupportedOperationException();
   }
 }
